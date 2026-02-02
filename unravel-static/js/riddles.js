@@ -21,9 +21,7 @@ window.RIDDLE_SETS = [
             Listen carefully.</em>
           </div>
 
-          <p style="opacity:0.6; font-size:13px; margin-top:15px;">
-            💡 Console contains an answer
-          </p>
+          
         </div>
       `,
       answer: "SENTINEL"
@@ -42,7 +40,7 @@ window.RIDDLE_SETS = [
           What is the next number in this sequence?
         </div>
       `,
-      code: "SEQUENCE_001",
+      code: "COUNT",
       answer: "13112221"
     }
   },
@@ -72,9 +70,7 @@ window.RIDDLE_SETS = [
             <span style="opacity: 0.7;">🔍 Inspect this element's attributes</span>
           </div>
 
-          <p style="opacity:0.6; font-size:13px; margin-top:15px;">
-            💡 Points to data-key, aria-label, or hidden attributes
-          </p>
+          
         </div>
       `,
       answer: "PROTOCOL"
@@ -90,7 +86,7 @@ window.RIDDLE_SETS = [
           Which digit stands for 'see'?
         </div>
       `,
-      code: "DECODE_001",
+      code: "DECODE",
       answer: "8"
     }
   },
@@ -143,7 +139,7 @@ window.RIDDLE_SETS = [
           If there are more large boxes than small boxes, how many cartons did he ship?
         </div>
       `,
-      code: "BOXES_001",
+      code: "BOXES",
       answer: "11"
     }
   },
@@ -181,7 +177,7 @@ window.RIDDLE_SETS = [
           how many will you pick to get at least 1 matching pair without looking?
         </div>
       `,
-      code: "SOCKS_001",
+      code: "SOCKS",
       answer: "4"
     }
   },
@@ -236,7 +232,7 @@ window.RIDDLE_SETS = [
           how many people are in the group?
         </div>
       `,
-      code: "SHARING_001",
+      code: "SHARING",
       answer: "23"
     }
   }
