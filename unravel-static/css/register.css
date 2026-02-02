@@ -1,0 +1,646 @@
+/* Minimalist dark horror with refined typography */
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body.pennywise-theme {
+background: #0a0a0f;
+color: #d0d0d0;
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+min-height: 100vh;
+overflow-x: hidden;
+position: relative;
+background-image:
+radial-gradient(circle at 20% 30%, rgba(30, 0, 10, 0.08) 0%, transparent 20%),
+radial-gradient(circle at 80% 70%, rgba(10, 0, 30, 0.08) 0%, transparent 20%),
+linear-gradient(135deg,
+rgba(15, 15, 20, 0.95) 0%,
+rgba(20, 20, 30, 0.9) 50%,
+rgba(15, 15, 25, 0.95) 100%);
+}
+
+/* Subtle Vignette Effect */
+.vignette-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: -3;
+background: radial-gradient(ellipse at center,
+transparent 40%,
+rgba(0, 0, 0, 0.6) 100%);
+opacity: 0.4;
+}
+
+/* Minimal Grid Background */
+.grid-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+z-index: -2;
+opacity: 0.03;
+background-image:
+linear-gradient(rgba(100, 100, 120, 0.1) 1px, transparent 1px),
+linear-gradient(90deg, rgba(100, 100, 120, 0.1) 1px, transparent 1px);
+background-size: 30px 30px;
+}
+
+/* Flicker Effect - Very Subtle */
+@keyframes subtle-flicker {
+0%, 100% { opacity: 1; }
+2% { opacity: 0.98; }
+4% { opacity: 1; }
+7% { opacity: 0.99; }
+8% { opacity: 1; }
+}
+
+body {
+animation: subtle-flicker 20s infinite;
+}
+
+/* Main Container - Minimal Dark Glass */
+.container {
+max-width: 800px;
+margin: 60px auto;
+padding: 50px;
+background: rgba(20, 20, 28, 0.85);
+border: 1px solid rgba(60, 60, 80, 0.3);
+border-radius: 12px;
+position: relative;
+z-index: 10;
+backdrop-filter: blur(10px);
+box-shadow:
+0 8px 32px rgba(0, 0, 0, 0.4),
+0 2px 8px rgba(0, 0, 0, 0.2),
+inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.container::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 1px;
+background: linear-gradient(90deg,
+transparent,
+rgba(80, 80, 100, 0.3),
+transparent);
+}
+
+/* Title - Clean and Minimal */
+.title-container {
+text-align: center;
+margin-bottom: 50px;
+position: relative;
+padding-bottom: 25px;
+}
+
+.title-container::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: 2px;
+background: linear-gradient(90deg,
+transparent,
+rgba(180, 180, 220, 0.3),
+transparent);
+}
+
+.glitch {
+font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+font-size: 2.8rem;
+font-weight: 300;
+color: #e0e0e8;
+margin-bottom: 10px;
+letter-spacing: 2px;
+text-transform: uppercase;
+position: relative;
+}
+
+.glitch::before {
+content: attr(data-text);
+position: absolute;
+top: 0;
+left: 2px;
+color: #404060;
+z-index: -1;
+animation: glitch-shift 8s infinite linear;
+opacity: 0.1;
+}
+
+@keyframes glitch-shift {
+0% { transform: translate(0, 0); }
+25% { transform: translate(1px, -1px); }
+50% { transform: translate(-1px, 1px); }
+75% { transform: translate(1px, 1px); }
+100% { transform: translate(0, 0); }
+}
+
+.subtitle {
+font-family: 'Inter', sans-serif;
+font-size: 1rem;
+color: #9090a0;
+letter-spacing: 4px;
+text-transform: uppercase;
+font-weight: 300;
+position: relative;
+margin-top: 10px;
+}
+
+/* Status Indicator */
+.status-indicator {
+position: fixed;
+top: 25px;
+right: 25px;
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 8px 12px;
+background: rgba(30, 30, 40, 0.7);
+border: 1px solid rgba(80, 80, 100, 0.2);
+border-radius: 6px;
+backdrop-filter: blur(5px);
+z-index: 100;
+}
+
+.status-dot {
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: #60a0ff;
+box-shadow: 0 0 10px #60a0ff;
+animation: pulse-blue 2s infinite;
+}
+
+@keyframes pulse-blue {
+0%, 100% { opacity: 0.8; }
+50% { opacity: 1; }
+}
+
+.status-text {
+font-family: 'SF Mono', monospace;
+font-size: 0.75rem;
+color: #9090b0;
+letter-spacing: 1px;
+}
+
+/* Form Container */
+.form-header {
+margin-bottom: 40px;
+padding: 20px;
+background: rgba(25, 25, 35, 0.5);
+border-radius: 8px;
+border-left: 3px solid rgba(100, 100, 150, 0.3);
+}
+
+.form-title {
+font-family: 'Inter', sans-serif;
+font-size: 1.1rem;
+color: #c0c0d0;
+letter-spacing: 1px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.form-title::before {
+content: '→';
+color: #8080a0;
+font-weight: 300;
+}
+
+/* Input Groups - Clean and Minimal */
+.input-group {
+margin-bottom: 30px;
+position: relative;
+}
+
+.server-label {
+display: block;
+font-family: 'Inter', sans-serif;
+font-size: 0.8rem;
+color: #a0a0b0;
+margin-bottom: 8px;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+font-weight: 500;
+}
+
+.input-group input {
+width: 100%;
+padding: 14px 16px;
+background: rgba(30, 30, 40, 0.7);
+border: 1px solid rgba(60, 60, 80, 0.4);
+border-radius: 6px;
+color: #e0e0e8;
+font-family: 'Inter', sans-serif;
+font-size: 1rem;
+transition: all 0.25s ease;
+outline: none;
+}
+
+.input-group input:focus {
+border-color: rgba(100, 120, 180, 0.6);
+background: rgba(35, 35, 45, 0.8);
+box-shadow: 0 0 0 2px rgba(100, 120, 180, 0.1);
+}
+
+.input-group input::placeholder {
+color: #606080;
+font-weight: 300;
+}
+
+.input-hint {
+font-size: 0.75rem;
+color: #707090;
+margin-top: 6px;
+padding-left: 4px;
+font-weight: 300;
+}
+
+/* Focus Indicator */
+.input-group.focused::before {
+content: '';
+position: absolute;
+left: -2px;
+top: 0;
+height: 100%;
+width: 2px;
+background: linear-gradient(to bottom, transparent, rgba(100, 120, 180, 0.3), transparent);
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.input-group.focused::before {
+opacity: 1;
+}
+
+/* Checkbox - Minimal */
+.consent-group {
+margin: 35px 0;
+padding: 20px;
+background: rgba(25, 25, 35, 0.5);
+border-radius: 8px;
+border: 1px solid rgba(60, 60, 80, 0.3);
+}
+
+.checkbox-container {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 12px;
+}
+
+.checkbox-container input[type="checkbox"] {
+display: none;
+}
+
+.checkbox-custom {
+width: 18px;
+height: 18px;
+border: 1.5px solid rgba(100, 100, 120, 0.6);
+border-radius: 4px;
+position: relative;
+cursor: pointer;
+transition: all 0.2s;
+background: rgba(30, 30, 40, 0.8);
+}
+
+.checkbox-container input[type="checkbox"]:checked + label .checkbox-custom {
+border-color: rgba(100, 150, 200, 0.8);
+background: rgba(100, 150, 200, 0.1);
+}
+
+.checkbox-container input[type="checkbox"]:checked + label .checkbox-custom::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 8px;
+height: 8px;
+background: rgba(100, 150, 200, 0.8);
+border-radius: 2px;
+}
+
+.consent-label {
+font-family: 'Inter', sans-serif;
+font-size: 0.9rem;
+color: #b0b0c0;
+cursor: pointer;
+font-weight: 400;
+}
+
+.consent-text {
+font-size: 0.85rem;
+color: #8080a0;
+line-height: 1.5;
+padding-left: 30px;
+font-weight: 300;
+}
+
+/* Button - Minimal with Subtle Animation */
+.access-btn {
+width: 100%;
+padding: 18px;
+background: linear-gradient(135deg,
+rgba(40, 40, 55, 0.9) 0%,
+rgba(35, 35, 50, 0.9) 100%);
+border: 1px solid rgba(80, 80, 110, 0.4);
+border-radius: 8px;
+color: #e0e0f0;
+font-family: 'Inter', sans-serif;
+font-size: 1rem;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+transition: all 0.3s ease;
+font-weight: 500;
+margin-top: 20px;
+}
+
+.access-btn:hover {
+background: linear-gradient(135deg,
+rgba(45, 45, 65, 0.9) 0%,
+rgba(40, 40, 60, 0.9) 100%);
+border-color: rgba(100, 120, 180, 0.5);
+transform: translateY(-1px);
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.access-btn:active {
+transform: translateY(0);
+}
+
+.access-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(
+90deg,
+transparent,
+rgba(255, 255, 255, 0.05),
+transparent
+);
+transition: left 0.6s;
+z-index: 1;
+}
+
+.access-btn:hover::before {
+left: 100%;
+}
+
+.access-btn.success {
+background: linear-gradient(135deg,
+rgba(40, 60, 40, 0.9) 0%,
+rgba(35, 50, 35, 0.9) 100%);
+border-color: rgba(80, 150, 80, 0.5);
+}
+
+.btn-main {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 12px;
+position: relative;
+z-index: 2;
+}
+
+.btn-icon {
+font-size: 1.1rem;
+opacity: 0.8;
+}
+
+.btn-text {
+font-weight: 500;
+}
+
+.btn-subtext {
+display: block;
+font-size: 0.75rem;
+color: #8080a0;
+margin-top: 6px;
+letter-spacing: 1px;
+position: relative;
+z-index: 2;
+font-weight: 300;
+}
+
+/* Timer - Minimal */
+.access-timer {
+position: fixed;
+bottom: 25px;
+right: 25px;
+padding: 15px 20px;
+background: rgba(25, 25, 35, 0.85);
+border: 1px solid rgba(60, 60, 80, 0.3);
+border-radius: 8px;
+z-index: 100;
+backdrop-filter: blur(5px);
+min-width: 160px;
+}
+
+.timer-header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 8px;
+}
+
+.timer-label {
+font-family: 'Inter', sans-serif;
+font-size: 0.75rem;
+color: #a0a0b0;
+letter-spacing: 1px;
+text-transform: uppercase;
+font-weight: 500;
+}
+
+.timer-icon {
+font-size: 1rem;
+color: #8080a0;
+opacity: 0.6;
+}
+
+.timer-countdown {
+font-family: 'SF Mono', monospace;
+font-size: 1.6rem;
+font-weight: 300;
+color: #e0e0f0;
+letter-spacing: 2px;
+text-align: center;
+}
+
+.timer-countdown.warning {
+color: #ffa040;
+animation: subtle-pulse 1.5s infinite;
+}
+
+@keyframes subtle-pulse {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.7; }
+}
+
+.timer-countdown.expired {
+color: #ff6060;
+}
+
+/* Server Footer - Minimal */
+.server-footer {
+margin-top: 40px;
+padding-top: 25px;
+border-top: 1px solid rgba(60, 60, 80, 0.3);
+}
+
+.footer-line {
+font-family: 'SF Mono', monospace;
+font-size: 0.75rem;
+color: #707090;
+margin-bottom: 6px;
+letter-spacing: 0.5px;
+text-align: center;
+font-weight: 300;
+}
+
+.security-level {
+color: #60a0ff;
+font-weight: 400;
+}
+
+.timer-warning {
+color: #ffa040;
+font-weight: 400;
+}
+
+.encryption-type {
+color: #80c0c0;
+font-style: italic;
+}
+
+/* Hidden Message - Subtle */
+.hidden-message {
+position: absolute;
+bottom: -40px;
+left: 0;
+width: 100%;
+text-align: center;
+font-family: 'SF Mono', monospace;
+font-size: 0.9rem;
+color: rgba(100, 100, 120, 0.3);
+letter-spacing: 3px;
+opacity: 0;
+display: none;
+animation: message-fade 4s ease;
+font-weight: 300;
+}
+
+@keyframes message-fade {
+0% { opacity: 0; }
+20% { opacity: 0.5; }
+80% { opacity: 0.5; }
+100% { opacity: 0; }
+}
+
+/* Subtle Horror Elements */
+.horror-elements {
+position: fixed;
+pointer-events: none;
+z-index: 1;
+opacity: 0.02;
+}
+
+.whisper {
+position: absolute;
+font-family: 'SF Mono', monospace;
+font-size: 0.7rem;
+color: #9090b0;
+white-space: nowrap;
+animation: whisper-drift 30s linear infinite;
+}
+
+@keyframes whisper-drift {
+0% {
+transform: translateX(100vw) translateY(0);
+opacity: 0;
+}
+5% { opacity: 0.05; }
+95% { opacity: 0.05; }
+100% {
+transform: translateX(-100%) translateY(200px);
+opacity: 0;
+}
+}
+
+/* Session Expired - Subtle */
+body.session-expired {
+animation: subtle-shake 0.5s ease;
+}
+
+@keyframes subtle-shake {
+0%, 100% { transform: translateX(0); }
+20%, 60% { transform: translateX(-2px); }
+40%, 80% { transform: translateX(2px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.container {
+margin: 30px 20px;
+padding: 30px;
+}
+
+.glitch {
+font-size: 2rem;
+}
+
+.subtitle {
+font-size: 0.9rem;
+letter-spacing: 3px;
+}
+
+.access-timer {
+left: 20px;
+right: 20px;
+bottom: 20px;
+}
+
+.status-indicator {
+top: 15px;
+right: 15px;
+}
+}
+
+/* Dark Mode Scrollbar */
+::-webkit-scrollbar {
+width: 8px;
+}
+
+::-webkit-scrollbar-track {
+background: rgba(20, 20, 28, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+background: rgba(60, 60, 80, 0.5);
+border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: rgba(80, 80, 100, 0.6);
+}

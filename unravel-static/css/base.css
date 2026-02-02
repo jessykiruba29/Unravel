@@ -1,0 +1,160 @@
+/* ===============================
+   ROOT VARIABLES
+================================ */
+:root {
+  --penny-red: #b11226;
+  --it-cyan: #00c2ff;
+  --dark-bg: #0b0d10;
+  --panel-bg: rgba(15, 17, 22, 0.96);
+  --border-soft: rgba(177, 18, 38, 0.35);
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+  --highlight: #ffd166;
+}
+
+/* ===============================
+   GLOBAL STYLES
+================================ */
+body {
+  margin: 0;
+  font-family: 'Rajdhani', 'Courier New', monospace;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(177,18,38,0.08), transparent 45%),
+    linear-gradient(#08090b, #0e1015);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===============================
+   LAYOUT
+================================ */
+.container {
+  max-width: 1100px;
+  margin: 6vh auto;
+  padding: 3rem;
+  background: var(--panel-bg);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.8),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+/* ===============================
+   HEADER
+================================ */
+h1 {
+  text-align: center;
+  font-size: 2.6rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(90deg, var(--penny-red), var(--highlight));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 2px solid var(--border-soft);
+  padding-bottom: 1rem;
+}
+.name{
+  color:red;
+}
+
+/* ===============================
+   SERVER STATUS INDICATOR
+================================ */
+.server-status {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--penny-red);
+  box-shadow: 0 0 12px var(--penny-red);
+  animation: status-pulse 2s ease-in-out infinite;
+  z-index: 50;
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+
+
+
+/* ===============================
+   BUTTON
+================================ */
+
+
+/* ===============================
+   FOOTER
+================================ */
+.server-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-soft);
+  text-align: center;
+}
+
+.footer-line {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+}
+
+.footer-line span {
+  color: var(--highlight);
+}
+
+/* ===============================
+   ACCESS TIMER (SUBTLE)
+================================ */
+.access-timer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(12, 14, 18, 0.95);
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  font-family: 'Courier New', monospace;
+  color: var(--highlight);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.timer-text div:first-child {
+  font-size: 0.8rem;
+  color: var(--it-cyan);
+}
+
+.timer-text div:last-child {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .container {
+    margin: 1.5rem;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .access-timer {
+    position: static;
+    margin: 2rem auto 0;
+  }
+}

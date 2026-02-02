@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UNRAVEL – Start</title>
+  <link rel="stylesheet" href="css/start.css">
+</head>
+<body>
+
+<!-- ACCESS + BACK BUTTON LOCK -->
+<script>
+  
+  // Allow only registered users
+  if (!localStorage.getItem("unravel_registered")) {
+    window.location.replace("register.html");
+  }
+
+</script>
+
+<div class="container">
+  <h1>System Ready</h1>
+  <button id="register-btn" onclick="startGame()">START</button>
+</div>
+
+<script src="js/gate.js"></script>
+</body>
+</html>

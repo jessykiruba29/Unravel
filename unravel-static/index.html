@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>UNRAVEL :: Stranger Access</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Anton&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+  <!-- BACKGROUND EFFECTS -->
+  <div class="bg-portal"></div>
+  <div class="bg-led-grid"></div>
+  <div class="bg-scanlines"></div>
+  <div id="fx-blood"></div>
+
+  <main class="unravel-shell">
+
+    <!-- TITLE -->
+    <header class="unravel-header">
+      <h1 class="glitch-title" data-text="UNRAVEL">UNRAVEL</h1>
+      <p class="round-label">Round 1 — Access Control</p>
+      <div class="header-divider"></div>
+    </header>
+
+    <!-- SYSTEM PANEL -->
+    <section id="systemPanel" class="sys-panel locked-state">
+      <h2>SYSTEM STATUS</h2>
+      <p id="systemState" class="sys-text">CORE SYSTEM LOCKED</p>
+      <p class="sys-timer">Time Remaining: <span id="timer">10:00</span></p>
+    </section>
+
+    <div class="phase-grid">
+
+      <!-- PHASE 1 -->
+      <section id="phase1Panel" class="phase-panel locked-state">
+        <h2>PHASE 1 — ACCESS FRAGMENT</h2>
+
+        <!-- 🔥 Dynamic riddle injected here -->
+        <p id="phase1Riddle" class="phase-hint"></p>
+
+        <form onsubmit="phase1Submit(event)" class="input-zone">
+          <input id="phase1Input" placeholder="ENTER ACCESS KEY" autocomplete="off">
+          <button id="phase1Btn" type="submit">DECRYPT</button>
+        </form>
+
+        <p id="phase1Success" class="msg-success hidden">
+          ✔ PHASE 1 ACCESS GRANTED
+        </p>
+
+        <div id="phase1Error" class="msg-error hidden">
+          ⚠ ACCESS KEY DENIED
+          <div id="phase1AttemptsLeft" class="attempts-info"></div>
+        </div>
+
+        <div id="phase1Lockout" class="msg-lockout hidden">
+          ⛔ ACCESS TERMINAL LOCKED
+        </div>
+      </section>
+
+      <!-- PHASE 2 -->
+      <!-- PHASE 2 -->
+<section id="phase2Panel" class="phase-panel locked-state">
+  <h2>PHASE 2 — LOGIC FRAGMENT</h2>
+
+  <!-- 🔥 Riddle / hint -->
+  <blockquote id="phase2Riddle" class="logic-riddle"></blockquote>
+
+  <!-- 🔥 Code / output to process (ALWAYS visible) -->
+  <pre class="logic-box">
+    <code id="phase2Code" class="logic-code"></code>
+  </pre>
+
+  <form onsubmit="phase2Submit(event)" class="input-zone">
+    <input
+      id="phase2Input"
+      placeholder="ENTER PROCESSED OUTPUT"
+      autocomplete="off"
+    />
+    <button id="phase2Btn" type="submit">PROCESS</button>
+  </form>
+
+  <p id="phase2Success" class="msg-success hidden">
+    ✔ PHASE 2 LOGIC ACCEPTED
+  </p>
+
+  <div id="phase2Error" class="msg-error hidden">
+    ⚠ LOGIC PROCESSING FAILED
+    <div id="phase2AttemptsLeft" class="attempts-info"></div>
+  </div>
+
+  <div id="phase2Lockout" class="msg-lockout hidden">
+    ⛔ LOGIC TERMINAL LOCKED
+  </div>
+</section>
+
+
+    </div>
+
+    <!-- FINAL -->
+    <section id="finalPanel" class="final-panel locked-state">
+      <h2>FINAL RULE — COMBINE KEYS</h2>
+
+      <!-- 🔥 Dynamic final key format -->
+      <code id="finalCode" class="final-code">KEYA_KEYB</code>
+
+      <form onsubmit="finalSubmit(event)" class="input-zone">
+        <input id="finalInput" placeholder="ENTER FINAL KEY" autocomplete="off">
+        <button>UNRAVEL SYSTEM</button>
+      </form>
+
+      <p id="finalSuccess" class="msg-success hidden">
+        🔓 SYSTEM COMPROMISED<br>
+        THE UPSIDE DOWN HAS BEEN BREACHED
+      </p>
+    </section>
+
+    <footer class="unravel-footer">
+      STRANGER NETWORKS • OFFLINE MODE
+    </footer>
+
+  </main>
+
+  <!-- 🔒 Access protection -->
+  <script>
+    if (
+      !localStorage.getItem("unravel_registered") ||
+      !localStorage.getItem("unravel_started")
+    ) {
+      window.location.href = "register.html";
+    }
+  </script>
+
+  <!-- Config for backend API URL -->
+  <script src="js/config.js"></script>
+  <!-- Riddle sets (already chosen during register) -->
+  <script src="js/riddles.js"></script>
+
+  <!-- Game logic -->
+  <script src="js/game.js"></script>
+
+</body>
+</html>

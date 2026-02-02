@@ -1,0 +1,277 @@
+/* ===============================
+   SERVER TERMINAL PANELS
+================================ */
+.panel {
+  position: relative;
+  padding: 28px;
+  border-radius: 14px;
+  background: rgba(0, 10, 5, 0.85);
+  border: 2px solid rgba(0, 255, 136, 0.25);
+  margin-bottom: 40px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-family: 'Courier New', monospace;
+}
+
+/* Server panel base decoration */
+.panel::before {
+  content: "╔═══════════════════════════════════════════╗";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  color: rgba(0, 255, 136, 0.3);
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.panel::after {
+  content: "╚═══════════════════════════════════════════╝";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  color: rgba(0, 255, 136, 0.3);
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* Server status - Locked */
+.panel.locked {
+  border-color: rgba(0, 255, 136, 0.35);
+  background: rgba(0, 15, 8, 0.9);
+}
+
+.panel.locked::before,
+.panel.locked::after {
+  content: "█▓▒░ LOCKED SERVER TERMINAL ░▒▓█";
+  color: rgba(255, 179, 71, 0.4);
+}
+
+.panel.locked::after {
+  content: "▒▓░ ACCESS RESTRICTED ░▓▒";
+}
+
+/* Server status - Unlocked */
+.panel.unlocked {
+  border-color: #00ff88;
+  box-shadow: 
+    0 0 25px rgba(0, 255, 136, 0.4),
+    inset 0 0 20px rgba(0, 255, 136, 0.1);
+  background: rgba(0, 20, 10, 0.95);
+  animation: server-boot 1s ease-out;
+}
+
+.panel.unlocked::before,
+.panel.unlocked::after {
+  content: "█▓▒░ SERVER ACCESS GRANTED ░▒▓█";
+  color: rgba(0, 255, 136, 0.6);
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.panel.unlocked::after {
+  content: "▒▓░ ALL SYSTEMS ONLINE ░▓▒";
+}
+
+@keyframes server-boot {
+  0% { 
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.7);
+  }
+  100% { 
+    transform: scale(1);
+  }
+}
+
+/* Server panel header */
+.panel h2 {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 3px;
+  color: #00ff88;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+  position: relative;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.panel h2::before {
+  content: "▶ ";
+  color: #ffb347;
+  margin-right: 10px;
+}
+
+.panel h2::after {
+  content: " SERVER NODE";
+  color: rgba(0, 255, 136, 0.5);
+  font-size: 0.8em;
+  margin-left: 10px;
+}
+
+/* Panel content */
+.panel-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Server terminal hint */
+.hint {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #9ad1ff;
+  background: rgba(10, 30, 50, 0.3);
+  padding: 15px;
+  border-left: 4px solid #ffb347;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.6;
+}
+
+.hint::before {
+  content: "💡 ";
+  margin-right: 8px;
+  color: #ffb347;
+}
+
+/* Server activity indicator */
+.server-activity {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: rgba(0, 255, 136, 0.7);
+}
+
+.activity-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 255, 136, 0.5);
+  animation: activity-pulse 2s infinite;
+}
+
+.panel.locked .activity-led {
+  background: rgba(255, 179, 71, 0.5);
+  animation: activity-slow-pulse 3s infinite;
+}
+
+@keyframes activity-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes activity-slow-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Server terminal scrollbar */
+.panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.panel::-webkit-scrollbar-track {
+  background: rgba(0, 20, 10, 0.3);
+}
+
+.panel::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.3);
+  border-radius: 4px;
+}
+
+.panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 136, 0.5);
+}
+
+/* Panel hover effects */
+.panel:hover {
+  border-color: rgba(0, 255, 136, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 255, 136, 0.2);
+}
+
+.panel.unlocked:hover {
+  transform: translateY(-2px) scale(1.005);
+  box-shadow: 
+    0 10px 30px rgba(0, 255, 136, 0.5),
+    inset 0 0 25px rgba(0, 255, 136, 0.15);
+}
+
+/* Panel loading state */
+.panel.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.panel.loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    #00ff88, 
+    transparent
+  );
+  animation: loading-scan 1.5s infinite;
+}
+
+@keyframes loading-scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Panel grid layout */
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.panel-grid-item {
+  background: rgba(0, 20, 10, 0.4);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .panel {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .panel::before,
+  .panel::after {
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+  
+  .panel h2 {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .hint {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}

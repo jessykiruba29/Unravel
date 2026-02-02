@@ -1,0 +1,258 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: linear-gradient(135deg, #2d130b, #560a1b);
+  background-size: 300% 300%;
+  animation: gradientShift 10s ease infinite;
+  color: #eaeaea;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================= BACKGROUND FX ================= */
+.bg-portal,
+.bg-led-grid,
+.bg-scanlines,
+#fx-blood {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-portal {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,87,34,0.25), transparent 45%),
+    radial-gradient(circle at 70% 70%, rgba(156,39,176,0.25), transparent 45%);
+}
+
+.bg-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.04) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+/* ================= MAIN SHELL ================= */
+.unravel-shell {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 40px;
+}
+
+/* ================= HEADER ================= */
+.unravel-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.glitch-title {
+  font-size: 5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+
+  background: linear-gradient(135deg, #f58d6e, #e56bfb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 15px rgba(255, 86, 34, 0.94),
+    0 0 35px rgba(143, 39, 161, 0.9);
+}
+
+.round-label {
+  margin-top: 10px;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffd2c4;
+}
+
+.header-divider {
+  width: 120px;
+  height: 2px;
+  margin: 20px auto 0;
+  background: linear-gradient(90deg, transparent, #ff5722, #9c27b0, transparent);
+}
+
+/* ================= SYSTEM PANEL ================= */
+.sys-panel {
+  margin-bottom: 30px;
+  padding: 25px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(16px);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
+
+  box-shadow:
+    0 0 25px rgba(255,87,34,0.35),
+    0 0 50px rgba(156,39,176,0.3);
+}
+
+.sys-panel h2 {
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.sys-text {
+  color: #ff9a76;
+  margin-bottom: 8px;
+}
+
+.sys-timer {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ================= GRID ================= */
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* ================= PANELS ================= */
+.phase-panel,
+.final-panel {
+  padding: 25px;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(16px);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 0 25px rgba(255,87,34,0.35),
+    0 0 50px rgba(156,39,176,0.3);
+}
+
+.phase-panel h2,
+.final-panel h2 {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+/* ================= TEXT ================= */
+.phase-hint,
+.logic-riddle {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  color: #ffd2c4;
+}
+
+.logic-box {
+  background: rgba(0,0,0,0.7);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  font-family: 'Courier New', monospace;
+}
+
+/* ================= INPUT ================= */
+.input-zone {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input-zone input {
+  flex: 1;
+  padding: 14px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.input-zone input:focus {
+  outline: none;
+  border-color: #ff5722;
+  box-shadow:
+    0 0 12px rgba(255,87,34,0.5),
+    0 0 20px rgba(156,39,176,0.4);
+}
+
+/* ================= BUTTON ================= */
+button {
+  padding: 14px 22px;
+  background: linear-gradient(135deg, #ff5722, #9c27b0);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 0 15px rgba(255,87,34,0.6),
+    0 0 30px rgba(156,39,176,0.5);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 25px rgba(255,87,34,0.85),
+    0 0 55px rgba(156,39,176,0.75);
+}
+
+/* ================= MESSAGES ================= */
+.msg-success {
+  margin-top: 15px;
+  color: #8cffc1;
+}
+
+.msg-error {
+  margin-top: 15px;
+  color: #ff9a9a;
+}
+
+.msg-lockout {
+  margin-top: 15px;
+  color: #ff4d4d;
+}
+
+/* ================= FINAL ================= */
+.final-code {
+  display: block;
+  margin: 15px 0;
+  padding: 12px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 8px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* ================= FOOTER ================= */
+.unravel-footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: #ffd2c4;
+}
+
+/* ================= UTIL ================= */
+.hidden {
+  display: none;
+}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UNRAVEL — Initializing</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Courier+New:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      font-family: rajdhani, 'Courier New', monospace;
+      background: linear-gradient(135deg, #2d130b, #560a1b);
+      animation: gradientShift 8s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* animated background */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* dark glass overlay */
+    .loader-wrapper {
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(18px);
+      background: rgba(0,0,0,0.55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* scanlines */
+    .loader-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+    }
+
+    /* TITLE */
+    .title {
+      font-size: 6.5rem;
+      letter-spacing: 12px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow:
+        0 0 15px rgba(255, 86, 34, 0.94),
+        0 0 35px rgba(143, 39, 161, 0.91);
+      position: relative;
+    }
+
+    /* glitch layers */
+    .title::before,
+    .title::after {
+      content: "UNRAVEL";
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.4;
+    }
+
+    .title::before {
+      color: #ff5722;
+      animation: glitch1 2s infinite;
+    }
+
+    .title::after {
+      color: #9c27b0;
+      animation: glitch2 2s infinite;
+    }
+
+    @keyframes glitch1 {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-1px, 1px); }
+      100% { transform: translate(0); }
+    }
+
+    @keyframes glitch2 {
+      0% { transform: translate(0); }
+      20% { transform: translate(2px, -1px); }
+      40% { transform: translate(-2px, 1px); }
+      60% { transform: translate(1px, -1px); }
+      100% { transform: translate(0); }
+    }
+
+    /* 🎬 CINEMATIC ENTRY + EXIT */
+    .cinematic {
+      opacity: 0;
+      transform: scale(0.8);
+      animation:
+        titleEnter 1.8s ease-out forwards,
+        titleBreathe 2.4s ease-in-out 1.8s infinite,
+        titleExit 1.2s ease-in forwards 3.8s;
+    }
+
+    @keyframes titleEnter {
+      0% {
+        opacity: 0;
+        transform: scale(0.7);
+        filter: blur(14px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes titleBreathe {
+      0%, 100% {
+        text-shadow:
+          0 0 15px rgba(255, 86, 34, 0.8),
+          0 0 35px rgba(143, 39, 161, 0.7);
+      }
+      50% {
+        text-shadow:
+          0 0 28px rgba(255, 86, 34, 1),
+          0 0 60px rgba(143, 39, 161, 1);
+      }
+    }
+
+    @keyframes titleExit {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.15);
+        filter: blur(12px);
+      }
+    }
+
+    /* responsive */
+    @media(max-width: 768px) {
+      .title {
+        font-size: 4rem;
+        letter-spacing: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loader-wrapper">
+    <div class="title cinematic">UNRAVEL</div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "register.html";
+    }, 5000);
+  </script>
+
+</body>
+</html>
