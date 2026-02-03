@@ -5,8 +5,32 @@ import {pool} from "./db";
 const app = express();
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 
-app.use(cors());
+
+const allowedOrigins = [
+  "https://unravel-trojans.vercel.app",
+  "http://localhost:8080"
+];
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
+
 app.use(express.json());
+
 
 let users: any[] = [];
 let nextId = 1;
