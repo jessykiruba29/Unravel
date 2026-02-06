@@ -217,7 +217,7 @@ function initializeGameState() {
  * TIMER
  *********************************/
 async function startTimer() {
-  const TOTAL_TIME = 20 * 60;
+  const TOTAL_TIME = 10 * 60;
   const userId = localStorage.getItem("unravel_user_id");
 
   // Try to fetch start time from backend first
